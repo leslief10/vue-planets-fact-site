@@ -2,6 +2,7 @@
 import { provide, ref } from 'vue';
 import ButtonComponent from './components/ButtonComponent.vue';
 import HeaderComponent from './components/HeaderComponent.vue';
+import InfoNav from './components/InfoNav.vue';
 import data from '../src/data/data.json';
 
 const planetsData = ref(data);
@@ -10,6 +11,7 @@ provide('planetsData', planetsData);
 
 <template>
   <HeaderComponent />
+  <InfoNav planet="mercury" :if-selected="true" />
   <ButtonComponent planet="mercury" :if-selected="true">
     <span>01</span>
     <span>Component</span>
