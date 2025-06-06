@@ -7,12 +7,16 @@ const innerWidth = ref(0);
 const visibleNav = ref(false);
 const planets = inject('planetsData');
 
-console.log(planets.value)
+console.log(planets.value);
 
 onMounted(() => (innerWidth.value = window.innerWidth));
 
 const changeNavVisibility = () => {
-    visibleNav.value = !visibleNav.value;
+  visibleNav.value = !visibleNav.value;
+};
+
+const handleCloseNav = () => {
+  visibleNav.value = false;
 };
 </script>
 
@@ -20,15 +24,11 @@ const changeNavVisibility = () => {
   <header class="header">
     <div class="header__logo__container">
       <span>The Planets</span>
-      <button
-        class="header__logo__button"
-        :class="[visibleNav ? 'opacity' : '']"
-        @click="changeNavVisibility"
-      >
+      <button class="header__logo__button" :class="[visibleNav ? 'opacity' : '']" @click="changeNavVisibility">
         <SVGIcon name="icon-hamburger" />
       </button>
     </div>
-    <MainNav :inner-width="innerWidth" :visible-nav="visibleNav" />
+    <MainNav :inner-width="innerWidth" :visible-nav="visibleNav" @close-nav="handleCloseNav" />
   </header>
 </template>
 

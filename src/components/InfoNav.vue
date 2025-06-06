@@ -1,27 +1,32 @@
 <script setup>
 defineProps({
   planet: String,
-  ifSelected: Boolean,
+  activeSection: String,
 });
+
+const sections = [
+  { id: 'overview', label: 'Overview', number: '01' },
+  { id: 'structure', label: 'Structure', number: '02' },
+  { id: 'geology', label: 'Surface', number: '03' },
+];
+
+const emit = defineEmits(['update-section']);
 </script>
 
 <template>
-    <nav aria-labelledby="information-navigation" class="info-nav">
-      <ul class="info-nav__list">
-        <li class="info-nav__list__item">
-          <span class="info-nav__list__item--decorator" :class="[ifSelected ? planet : '']"></span>
-          Overview
-        </li>
-        <li class="info-nav__list__item">
-          <span class="info-nav__list__item--decorator" :class="[ifSelected ? planet : '']"></span>
-          Structure
-        </li>
-        <li class="info-nav__list__item">
-          <span class="info-nav__list__item--decorator" :class="[ifSelected ? planet : '']"></span>
-          Surface
-        </li>
-      </ul>
-    </nav>
+  <nav aria-labelledby="information-navigation" class="info-nav">
+    <ul class="info-nav__list">
+      <li
+        v-for="section in sections"
+        :key="section.id"
+        class="info-nav__list__item"
+        @click="emit('update-section', section.id)"
+      >
+        <span class="info-nav__list__item--decorator" :class="[activeSection === section.id ? planet : '']"></span>
+        {{ section.label }}
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <style scoped>

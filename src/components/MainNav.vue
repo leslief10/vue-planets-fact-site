@@ -4,14 +4,20 @@ import { inject, computed } from 'vue';
 
 const planets = inject('planetsData');
 
-defineProps({
+const props = defineProps({
   visibleNav: Boolean,
-  innerWidth: Number
-})
+  innerWidth: Number,
+});
+
+const emit = defineEmits(['closeNav']);
 
 const displayNav = computed(() => {
-  return innerWidth >= 768;
-})
+  return props.innerWidth >= 768;
+});
+
+const handleNavClick = () => {
+  emit('closeNav');
+};
 </script>
 
 <template>
@@ -19,10 +25,15 @@ const displayNav = computed(() => {
     <ul class="nav__list">
       <li v-for="planet in planets" :key="planet.id" class="nav__list__item">
         <span class="nav__list__item--decorator" :class="`${planet.name.toLowerCase()}`"></span>
-        <a href="#" className="nav__list__item--text" :alt="`Click here for information about ${planet.name}`">
+        <router-link
+          :to="`/${planet.name.toLowerCase()}`"
+          class="nav__list__item--text"
+          :title="`Click here for information about ${planet.name}`"
+          @click="handleNavClick"
+        >
           {{ planet.name }}
           <SVGIcon name="icon-chevron" class="nav__list__item--icon" />
-        </a>
+        </router-link>
       </li>
     </ul>
   </nav>
@@ -36,6 +47,7 @@ const displayNav = computed(() => {
   height: auto;
   padding: 1.5rem;
   background-color: var(--rich-black);
+  z-index: 1;
 }
 
 .nav__list__item {
