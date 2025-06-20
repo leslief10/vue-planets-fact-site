@@ -12,8 +12,6 @@ const currentPlanet = computed(() => {
   return planets.value.find((planet) => planet.name.toLowerCase() === route.params.planet.toLowerCase());
 });
 
-console.log('currentPlanet', currentPlanet.value);
-
 const handleSectionUpdate = (section) => {
   activeSection.value = section;
 };

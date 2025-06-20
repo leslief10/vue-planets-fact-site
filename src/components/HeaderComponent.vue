@@ -1,15 +1,9 @@
 <script setup>
 import SVGIcon from './SVGIcon.vue';
 import MainNav from './MainNav.vue';
-import { inject, ref, onMounted } from 'vue';
+import { ref } from 'vue';
 
-const innerWidth = ref(0);
 const visibleNav = ref(false);
-const planets = inject('planetsData');
-
-console.log(planets.value);
-
-onMounted(() => (innerWidth.value = window.innerWidth));
 
 const changeNavVisibility = () => {
   visibleNav.value = !visibleNav.value;
@@ -28,7 +22,7 @@ const handleCloseNav = () => {
         <SVGIcon name="icon-hamburger" />
       </button>
     </div>
-    <MainNav :inner-width="innerWidth" :visible-nav="visibleNav" @close-nav="handleCloseNav" />
+    <MainNav :visible-nav="visibleNav" @close-nav="handleCloseNav" />
   </header>
 </template>
 

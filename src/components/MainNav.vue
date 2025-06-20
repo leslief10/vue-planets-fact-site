@@ -3,16 +3,16 @@ import SVGIcon from './SVGIcon.vue';
 import { inject, computed } from 'vue';
 
 const planets = inject('planetsData');
+const innerWidth = inject('innerWidth');
 
-const props = defineProps({
+defineProps({
   visibleNav: Boolean,
-  innerWidth: Number,
 });
 
 const emit = defineEmits(['closeNav']);
 
 const displayNav = computed(() => {
-  return props.innerWidth >= 768;
+  return innerWidth.value >= 768;
 });
 
 const handleNavClick = () => {
