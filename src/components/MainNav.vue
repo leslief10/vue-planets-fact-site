@@ -44,7 +44,7 @@ const handleNavClick = () => {
   position: absolute;
   top: 68px;
   width: 100%;
-  height: auto;
+  height: 100dvh;
   padding: 1.5rem;
   background-color: var(--rich-black);
   z-index: 1;
@@ -93,6 +93,7 @@ const handleNavClick = () => {
   .nav {
     position: relative;
     top: 0;
+    height: auto;
     padding: 0 0 1.75rem;
     background-color: transparent;
   }

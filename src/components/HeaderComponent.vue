@@ -16,7 +16,7 @@ const handleCloseNav = () => {
 
 <template>
   <header class="header">
-    <div class="header__logo__container">
+    <div class="header__logo">
       <span>The Planets</span>
       <button class="header__logo__button" :class="[visibleNav ? 'opacity' : '']" @click="changeNavVisibility">
         <SVGIcon name="icon-hamburger" />
@@ -34,7 +34,7 @@ const handleCloseNav = () => {
   border-bottom: 1px solid var(--white-30);
 }
 
-.header__logo__container {
+.header__logo {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,7 +61,7 @@ const handleCloseNav = () => {
     height: auto;
   }
 
-  .header__logo__container {
+  .header__logo {
     padding-top: 2rem;
   }
 
@@ -77,11 +77,11 @@ const handleCloseNav = () => {
     align-items: end;
   }
 
-  .header__logo__container {
+  .header__logo {
     padding: 1.5rem 0 1.75rem 2rem;
   }
 
-  .header__logo__container span {
+  .header__logo span {
     width: max-content;
   }
 }
