@@ -18,7 +18,11 @@ const handleCloseNav = () => {
   <header class="header">
     <div class="header__logo">
       <span>The Planets</span>
-      <button class="header__logo__button" :class="[visibleNav ? 'opacity' : '']" @click="changeNavVisibility">
+      <button
+        class="header__logo__button"
+        :class="[visibleNav ? 'opacity' : '']"
+        @click="changeNavVisibility"
+      >
         <SVGIcon name="icon-hamburger" />
       </button>
     </div>

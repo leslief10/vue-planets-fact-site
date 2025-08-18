@@ -1,6 +1,9 @@
 <script setup>
 defineProps({
-  planet: String,
+  planet: {
+    type: String,
+    default: 'Earth',
+  },
   ifSelected: Boolean,
 });
 </script>

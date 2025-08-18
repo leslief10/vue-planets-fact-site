@@ -52,7 +52,7 @@
       "overview": "planet-venus.svg",
       "structure": "planet-venus-internal.svg",
       "geology": "geology-venus.png",
-        "size": {
+      "size": {
         "mobile": "154px",
         "tablet": "253px",
         "desktop": "400px"
@@ -82,7 +82,7 @@
       "overview": "planet-earth.svg",
       "structure": "planet-earth-internal.svg",
       "geology": "geology-earth.png",
-        "size": {
+      "size": {
         "mobile": "173px",
         "tablet": "285px",
         "desktop": "450px"
@@ -112,7 +112,7 @@
       "overview": "planet-mars.svg",
       "structure": "planet-mars-internal.svg",
       "geology": "geology-mars.png",
-        "size": {
+      "size": {
         "mobile": "129px",
         "tablet": "213px",
         "desktop": "336px"
@@ -142,7 +142,7 @@
       "overview": "planet-jupiter.svg",
       "structure": "planet-jupiter-internal.svg",
       "geology": "geology-jupiter.png",
-        "size": {
+      "size": {
         "mobile": "224px",
         "tablet": "369px",
         "desktop": "582px"
@@ -172,7 +172,7 @@
       "overview": "planet-saturn.svg",
       "structure": "planet-saturn-internal.svg",
       "geology": "geology-saturn.png",
-        "size": {
+      "size": {
         "mobile": "256px",
         "tablet": "422px",
         "desktop": "665px"
@@ -202,7 +202,7 @@
       "overview": "planet-uranus.svg",
       "structure": "planet-uranus-internal.svg",
       "geology": "geology-uranus.png",
-        "size": {
+      "size": {
         "mobile": "176px",
         "tablet": "290px",
         "desktop": "458px"
@@ -232,7 +232,7 @@
       "overview": "planet-neptune.svg",
       "structure": "planet-neptune-internal.svg",
       "geology": "geology-neptune.png",
-        "size": {
+      "size": {
         "mobile": "173px",
         "tablet": "285px",
         "desktop": "450px"

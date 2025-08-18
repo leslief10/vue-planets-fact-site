@@ -1,7 +1,13 @@
 <script setup>
 defineProps({
-  planet: String,
-  activeSection: String,
+  planet: {
+    type: String,
+    default: 'Earth',
+  },
+  activeSection: {
+    type: String,
+    default: 'overview',
+  },
 });
 
 const sections = [
@@ -22,7 +28,10 @@ const emit = defineEmits(['update-section']);
         class="info-nav__list__item"
         @click="emit('update-section', section.id)"
       >
-        <span class="info-nav__list__item--decorator" :class="[activeSection === section.id ? planet : '']"></span>
+        <span
+          class="info-nav__list__item--decorator"
+          :class="[activeSection === section.id ? planet : '']"
+        ></span>
         {{ section.label }}
       </li>
     </ul>

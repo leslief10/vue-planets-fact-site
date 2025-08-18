@@ -9,7 +9,9 @@ const planets = inject('planetsData');
 const activeSection = ref('overview');
 
 const currentPlanet = computed(() => {
-  return planets.value.find((planet) => planet.name.toLowerCase() === route.params.planet.toLowerCase());
+  return planets.value.find(
+    (planet) => planet.name.toLowerCase() === route.params.planet.toLowerCase(),
+  );
 });
 
 const handleSectionUpdate = (section) => {
@@ -18,6 +20,10 @@ const handleSectionUpdate = (section) => {
 </script>
 
 <template>
-  <InfoNav :planet="route.params.planet" :active-section="activeSection" @update-section="handleSectionUpdate" />
+  <InfoNav
+    :planet="route.params.planet"
+    :active-section="activeSection"
+    @update-section="handleSectionUpdate"
+  />
   <PlanetInfo :planet-data="currentPlanet" :active-section="activeSection" />
 </template>

@@ -8,7 +8,7 @@ const innerWidth = ref(0);
 const planetsData = ref(data);
 
 onMounted(() => (innerWidth.value = window.innerWidth));
-provide("innerWidth", innerWidth);
+provide('innerWidth', innerWidth);
 provide('planetsData', planetsData);
 </script>
 

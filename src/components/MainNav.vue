@@ -21,10 +21,17 @@ const handleNavClick = () => {
 </script>
 
 <template>
-  <nav v-show="visibleNav || displayNav" aria-labelledby="primary-navigation" class="nav">
+  <nav
+    v-show="visibleNav || displayNav"
+    aria-labelledby="primary-navigation"
+    class="nav"
+  >
     <ul class="nav__list">
       <li v-for="planet in planets" :key="planet.id" class="nav__list__item">
-        <span class="nav__list__item--decorator" :class="`${planet.name.toLowerCase()}`"></span>
+        <span
+          class="nav__list__item--decorator"
+          :class="`${planet.name.toLowerCase()}`"
+        ></span>
         <router-link
           :to="`/${planet.name.toLowerCase()}`"
           class="nav__list__item--text"

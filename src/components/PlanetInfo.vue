@@ -5,10 +5,17 @@ import SVGIcon from './SVGIcon.vue';
 const innerWidth = inject('innerWidth');
 // console.log("innerWidth", innerWidth.value);
 
-
 const props = defineProps({
-  planetData: Object,
-  activeSection: String,
+  planetData: {
+    type: Object,
+    default() {
+      return {};
+    },
+  },
+  activeSection: {
+    type: String,
+    default: 'overview',
+  },
 });
 
 console.log(props.planetData);
@@ -18,17 +25,16 @@ const content = computed(() => {
   return props.planetData[props.activeSection];
 });
 
-const extraInfo = computed(() => { 
+const extraInfo = computed(() => {
   return {
-      'Rotation Time': props.planetData.rotation,
-      'Revolution Time': props.planetData.revolution,
-      'Radius': props.planetData.radius, 
-      'Average Temp.': props.planetData.temperature
-    }
-  ;
+    'Rotation Time': props.planetData.rotation,
+    'Revolution Time': props.planetData.revolution,
+    Radius: props.planetData.radius,
+    'Average Temp.': props.planetData.temperature,
+  };
 });
 
-const base = import.meta.env.BASE_URL
+const base = import.meta.env.BASE_URL;
 const svgImage = computed(() => {
   if (props.activeSection === 'geology') {
     return `${base}/svg/${props.planetData.images.overview}`;
@@ -47,9 +53,8 @@ const svgImageStyle = computed(() => {
 });
 
 const pngImage = computed(() => {
-  return `${base}/png/${props.planetData.images.geology}`
+  return `${base}/png/${props.planetData.images.geology}`;
 });
-
 </script>
 
 <template>
@@ -59,25 +64,31 @@ const pngImage = computed(() => {
         :src="svgImage"
         :alt="`${planetData.name} ${activeSection}`"
         class="planet-info__img__svg"
-        :style="{'width': svgImageStyle, 'height': svgImageStyle}"
+        :style="{ width: svgImageStyle, height: svgImageStyle }"
       />
-      <img v-if="activeSection === 'geology'" 
-        :src="pngImage" 
-        :alt="`${planetData.name} ${activeSection} picture`" 
+      <img
+        v-if="activeSection === 'geology'"
+        :src="pngImage"
+        :alt="`${planetData.name} ${activeSection} picture`"
         class="planet-info__img__png"
       />
     </figure>
     <div class="planet-info__description">
       <h1 class="planet-info__description__title">{{ planetData.name }}</h1>
       <p class="planet-info__description__text">{{ content.content }}</p>
-      <span class="planet-info__description__link">Source: 
+      <span class="planet-info__description__link"
+        >Source:
         <a :href="content.source" target="_blank">Wikipedia</a>
         <SVGIcon name="icon-source" />
       </span>
     </div>
     <aside class="planet-info__extra-info">
       <ul class="planet-info__extra-info__list">
-        <li v-for="data, type in extraInfo" :key="type" class="planet-info__extra-info__item">
+        <li
+          v-for="(data, type) in extraInfo"
+          :key="type"
+          class="planet-info__extra-info__item"
+        >
           <span class="planet-info__extra-info__item--type">{{ type }}</span>
           <span class="planet-info__extra-info__item--value">{{ data }}</span>
         </li>
