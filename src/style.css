@@ -82,6 +82,7 @@ button {
   align-items: center;
   /* justify-content: center; */
   min-height: 100dvh;
+  width: 100%;
   background: no-repeat bottom url('../src/assets/svg/background-stars.svg');
   background-color: var(--rich-black);
   color: #ffffff;

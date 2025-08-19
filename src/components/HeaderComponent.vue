@@ -17,12 +17,10 @@ const handleCloseNav = () => {
 <template>
   <header class="header">
     <div class="header__logo">
-      <span>The Planets</span>
-      <button
-        class="header__logo__button"
-        :class="[visibleNav ? 'opacity' : '']"
-        @click="changeNavVisibility"
-      >
+      <router-link :to="`/mercury`" class="header__title" :title="`Click here to go back to Mercury`">
+        The Planets
+      </router-link>
+      <button class="header__logo__button" :class="[visibleNav ? 'opacity' : '']" @click="changeNavVisibility">
         <SVGIcon name="icon-hamburger" />
       </button>
     </div>
@@ -85,7 +83,7 @@ const handleCloseNav = () => {
     padding: 1.5rem 0 1.75rem 2rem;
   }
 
-  .header__logo span {
+  .header__title {
     width: max-content;
   }
 }

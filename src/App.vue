@@ -1,6 +1,5 @@
 <script setup>
 import { provide, onMounted, ref } from 'vue';
-// import ButtonComponent from './components/ButtonComponent.vue';
 import HeaderComponent from './components/HeaderComponent.vue';
 import data from '../src/data/data.json';
 
@@ -15,10 +14,6 @@ provide('planetsData', planetsData);
 <template>
   <HeaderComponent />
   <router-view></router-view>
-  <!-- <ButtonComponent planet="mercury" :if-selected="true">
-    <span>01</span>
-    <span>Component</span>
-  </ButtonComponent> -->
 </template>
 
 <style scoped></style>

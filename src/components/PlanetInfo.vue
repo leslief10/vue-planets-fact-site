@@ -1,9 +1,9 @@
 <script setup>
 import { computed, inject } from 'vue';
 import SVGIcon from './SVGIcon.vue';
+import ButtonComponent from './ButtonComponent.vue';
 
 const innerWidth = inject('innerWidth');
-// console.log("innerWidth", innerWidth.value);
 
 const props = defineProps({
   planetData: {
@@ -60,35 +60,38 @@ const pngImage = computed(() => {
 <template>
   <section v-if="planetData" class="planet-info">
     <figure class="planet-info__img">
-      <img
-        :src="svgImage"
-        :alt="`${planetData.name} ${activeSection}`"
-        class="planet-info__img__svg"
-        :style="{ width: svgImageStyle, height: svgImageStyle }"
-      />
-      <img
-        v-if="activeSection === 'geology'"
-        :src="pngImage"
-        :alt="`${planetData.name} ${activeSection} picture`"
-        class="planet-info__img__png"
-      />
+      <img :src="svgImage" :alt="`${planetData.name} ${activeSection}`" class="planet-info__img__svg"
+        :style="{ width: svgImageStyle, height: svgImageStyle }" />
+      <img v-if="activeSection === 'geology'" :src="pngImage" :alt="`${planetData.name} ${activeSection} picture`"
+        class="planet-info__img__png" />
     </figure>
-    <div class="planet-info__description">
-      <h1 class="planet-info__description__title">{{ planetData.name }}</h1>
-      <p class="planet-info__description__text">{{ content.content }}</p>
-      <span class="planet-info__description__link"
-        >Source:
-        <a :href="content.source" target="_blank">Wikipedia</a>
-        <SVGIcon name="icon-source" />
-      </span>
+    <div class="planet-info__organizer">
+      <div class="planet-info__description">
+        <h1 class="planet-info__description__title">{{ planetData.name }}</h1>
+        <p class="planet-info__description__text">{{ content.content }}</p>
+        <span class="planet-info__description__link">Source:
+          <a :href="content.source" target="_blank">Wikipedia</a>
+          <SVGIcon name="icon-source" />
+        </span>
+      </div>
+      <div class="planet-info__buttons">
+        <ButtonComponent :planet="planetData.name.toLowerCase()" :if-selected="true">
+          <span>01</span>
+          <span>Overview</span>
+        </ButtonComponent>
+        <ButtonComponent :planet="planetData.name.toLowerCase()" :if-selected="true">
+          <span>02</span>
+          <span>Internal Structure</span>
+        </ButtonComponent>
+        <ButtonComponent :planet="planetData.name.toLowerCase()" :if-selected="true">
+          <span>03</span>
+          <span>Surface Geology</span>
+        </ButtonComponent>
+      </div>
     </div>
     <aside class="planet-info__extra-info">
       <ul class="planet-info__extra-info__list">
-        <li
-          v-for="(data, type) in extraInfo"
-          :key="type"
-          class="planet-info__extra-info__item"
-        >
+        <li v-for="(data, type) in extraInfo" :key="type" class="planet-info__extra-info__item">
           <span class="planet-info__extra-info__item--type">{{ type }}</span>
           <span class="planet-info__extra-info__item--value">{{ data }}</span>
         </li>
@@ -120,13 +123,16 @@ const pngImage = computed(() => {
   width: 55px;
 }
 
+.planet-info__organizer {
+  padding-top: 1.5rem;
+}
+
 .planet-info__description {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  padding-top: 1.5rem;
 }
 
 .planet-info__description__title {
@@ -190,5 +196,43 @@ const pngImage = computed(() => {
   font-family: var(--secondary-font);
   font-size: 1.25rem;
   letter-spacing: -1px;
+}
+
+.planet-info__buttons {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+
+  .planet-info__extra-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .planet-info__extra-info__list {
+    flex-direction: row;
+  }
+
+  .planet-info__extra-info__item {
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 10.25rem;
+    height: 5.5rem;
+    padding: 1rem 0 1.25rem 1rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .planet-info__extra-info__item {
+    min-width: 16rem;
+    height: 8rem;
+    padding: 1.25rem 0 1.75rem 1.5rem;
+  }
+
+  .planet-info__extra-info__item--value {
+    font-size: 2.5rem;
+    letter-spacing: -1.5px;
+  }
 }
 </style>
