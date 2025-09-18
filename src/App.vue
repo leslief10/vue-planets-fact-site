@@ -5,10 +5,12 @@ import data from '../src/data/data.json';
 
 const innerWidth = ref(0);
 const planetsData = ref(data);
+const visibleNav = ref(false);
 
 onMounted(() => (innerWidth.value = window.innerWidth));
 provide('innerWidth', innerWidth);
 provide('planetsData', planetsData);
+provide('visibleNav', visibleNav);
 </script>
 
 <template>

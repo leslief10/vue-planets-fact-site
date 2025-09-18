@@ -1,9 +1,10 @@
 <script setup>
 import { computed, inject } from 'vue';
 import SVGIcon from './SVGIcon.vue';
+import PlanetImage from './PlanetImage.vue';
 import ButtonComponent from './ButtonComponent.vue';
 
-const innerWidth = inject('innerWidth');
+const visibleNav = inject('visibleNav');
 
 const props = defineProps({
   planetData: {
@@ -18,7 +19,7 @@ const props = defineProps({
   },
 });
 
-console.log(props.planetData);
+defineEmits(['update-section']);
 
 const content = computed(() => {
   if (!props.planetData) return null;
@@ -33,57 +34,50 @@ const extraInfo = computed(() => {
     'Average Temp.': props.planetData.temperature,
   };
 });
-
-const base = import.meta.env.BASE_URL;
-const svgImage = computed(() => {
-  if (props.activeSection === 'geology') {
-    return `${base}/svg/${props.planetData.images.overview}`;
-  }
-  return `${base}/svg/${props.planetData.images[props.activeSection]}`;
-});
-
-const svgImageStyle = computed(() => {
-  if (innerWidth.value < 768) {
-    return props.planetData.images.size.mobile;
-  } else if (innerWidth.value >= 768 && innerWidth.value < 1024) {
-    return props.planetData.images.size.tablet;
-  }
-
-  return props.planetData.images.size.desktop;
-});
-
-const pngImage = computed(() => {
-  return `${base}/png/${props.planetData.images.geology}`;
-});
 </script>
 
 <template>
-  <section v-if="planetData" class="planet-info">
-    <figure class="planet-info__img">
-      <img :src="svgImage" :alt="`${planetData.name} ${activeSection}`" class="planet-info__img__svg"
-        :style="{ width: svgImageStyle, height: svgImageStyle }" />
-      <img v-if="activeSection === 'geology'" :src="pngImage" :alt="`${planetData.name} ${activeSection} picture`"
-        class="planet-info__img__png" />
-    </figure>
+  <section
+    v-if="planetData"
+    class="planet-info"
+    :class="[visibleNav ? 'planet-info--invisible' : '']"
+  >
+    <PlanetImage :planet-data="planetData" :active-section="activeSection" />
     <div class="planet-info__organizer">
       <div class="planet-info__description">
         <h1 class="planet-info__description__title">{{ planetData.name }}</h1>
         <p class="planet-info__description__text">{{ content.content }}</p>
-        <span class="planet-info__description__link">Source:
+        <span class="planet-info__description__link"
+          >Source:
           <a :href="content.source" target="_blank">Wikipedia</a>
           <SVGIcon name="icon-source" />
         </span>
       </div>
       <div class="planet-info__buttons">
-        <ButtonComponent :planet="planetData.name.toLowerCase()" :if-selected="true">
+        <ButtonComponent
+          :planet="planetData.name.toLowerCase()"
+          :if-selected="activeSection === 'overview'"
+          section="overview"
+          @update-section="$emit('update-section', $event)"
+        >
           <span>01</span>
           <span>Overview</span>
         </ButtonComponent>
-        <ButtonComponent :planet="planetData.name.toLowerCase()" :if-selected="true">
+        <ButtonComponent
+          :planet="planetData.name.toLowerCase()"
+          :if-selected="activeSection === 'structure'"
+          section="structure"
+          @update-section="$emit('update-section', $event)"
+        >
           <span>02</span>
           <span>Internal Structure</span>
         </ButtonComponent>
-        <ButtonComponent :planet="planetData.name.toLowerCase()" :if-selected="true">
+        <ButtonComponent
+          :planet="planetData.name.toLowerCase()"
+          :if-selected="activeSection === 'geology'"
+          section="geology"
+          @update-section="$emit('update-section', $event)"
+        >
           <span>03</span>
           <span>Surface Geology</span>
         </ButtonComponent>
@@ -91,7 +85,11 @@ const pngImage = computed(() => {
     </div>
     <aside class="planet-info__extra-info">
       <ul class="planet-info__extra-info__list">
-        <li v-for="(data, type) in extraInfo" :key="type" class="planet-info__extra-info__item">
+        <li
+          v-for="(data, type) in extraInfo"
+          :key="type"
+          class="planet-info__extra-info__item"
+        >
           <span class="planet-info__extra-info__item--type">{{ type }}</span>
           <span class="planet-info__extra-info__item--value">{{ data }}</span>
         </li>
@@ -108,19 +106,8 @@ const pngImage = computed(() => {
   padding: 1.5rem;
 }
 
-.planet-info__img {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 18.75rem;
-}
-
-.planet-info__img__png {
-  position: absolute;
-  /* bottom: 0;
-  left: 50%; */
-  width: 55px;
+.planet-info--invisible {
+  display: none;
 }
 
 .planet-info__organizer {
@@ -203,7 +190,6 @@ const pngImage = computed(() => {
 }
 
 @media screen and (min-width: 768px) {
-
   .planet-info__extra-info {
     display: flex;
     flex-direction: row;
@@ -221,9 +207,58 @@ const pngImage = computed(() => {
     height: 5.5rem;
     padding: 1rem 0 1.25rem 1rem;
   }
+
+  .planet-info__organizer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .planet-info__description {
+    max-width: 21.25rem;
+    align-items: flex-start;
+  }
+
+  .planet-info__description__text {
+    text-align: left;
+  }
+
+  .planet-info__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 }
 
 @media screen and (min-width: 1024px) {
+  .planet-info {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    padding: 4.5rem 0 3.5rem;
+  }
+
+  .planet-info__description {
+    gap: 1.5rem;
+  }
+
+  .planet-info__description__title {
+    font-size: 5rem;
+  }
+
+  .planet-info__organizer {
+    grid-area: 1 / 5 / 5 / 7;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-top: 0;
+  }
+
+  .planet-info__extra-info {
+    grid-area: 5 / 1 / 7 / 7;
+  }
+
   .planet-info__extra-info__item {
     min-width: 16rem;
     height: 8rem;

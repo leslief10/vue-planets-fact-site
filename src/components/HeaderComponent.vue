@@ -1,9 +1,9 @@
 <script setup>
 import SVGIcon from './SVGIcon.vue';
 import MainNav from './MainNav.vue';
-import { ref } from 'vue';
+import { inject } from 'vue';
 
-const visibleNav = ref(false);
+const visibleNav = inject('visibleNav');
 
 const changeNavVisibility = () => {
   visibleNav.value = !visibleNav.value;
@@ -17,10 +17,18 @@ const handleCloseNav = () => {
 <template>
   <header class="header">
     <div class="header__logo">
-      <router-link :to="`/mercury`" class="header__title" :title="`Click here to go back to Mercury`">
+      <router-link
+        :to="`/mercury`"
+        class="header__title"
+        :title="`Click here to go back to Mercury`"
+      >
         The Planets
       </router-link>
-      <button class="header__logo__button" :class="[visibleNav ? 'opacity' : '']" @click="changeNavVisibility">
+      <button
+        class="header__logo__button"
+        :class="[visibleNav ? 'opacity' : '']"
+        @click="changeNavVisibility"
+      >
         <SVGIcon name="icon-hamburger" />
       </button>
     </div>

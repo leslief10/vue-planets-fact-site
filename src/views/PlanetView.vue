@@ -1,5 +1,5 @@
 <script setup>
-import { computed, inject, ref } from 'vue';
+import { computed, inject, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import InfoNav from '../components/InfoNav.vue';
 import PlanetInfo from '../components/PlanetInfo.vue';
@@ -14,6 +14,13 @@ const currentPlanet = computed(() => {
   );
 });
 
+watch(
+  () => route.params.planet,
+  () => {
+    activeSection.value = 'overview';
+  },
+);
+
 const handleSectionUpdate = (section) => {
   activeSection.value = section;
 };
@@ -25,5 +32,9 @@ const handleSectionUpdate = (section) => {
     :active-section="activeSection"
     @update-section="handleSectionUpdate"
   />
-  <PlanetInfo :planet-data="currentPlanet" :active-section="activeSection" />
+  <PlanetInfo
+    :planet-data="currentPlanet"
+    :active-section="activeSection"
+    @update-section="handleSectionUpdate"
+  />
 </template>

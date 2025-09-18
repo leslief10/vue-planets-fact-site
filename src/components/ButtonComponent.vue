@@ -5,11 +5,21 @@ defineProps({
     default: 'Earth',
   },
   ifSelected: Boolean,
+  section: {
+    type: String,
+    required: true,
+  },
 });
+
+const emit = defineEmits(['update-section']);
 </script>
 
 <template>
-  <button class="button" :class="[ifSelected ? planet : '']">
+  <button
+    class="button"
+    :class="[ifSelected ? planet : '']"
+    @click="emit('update-section', section)"
+  >
     <slot></slot>
   </button>
 </template>
@@ -39,6 +49,13 @@ defineProps({
   .button:hover {
     cursor: pointer;
     background-color: var(--light-silver-30);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .button {
+    width: 21.875rem;
+    font-size: 0.75rem;
   }
 }
 </style>
