@@ -1,9 +1,7 @@
 {
   "eslint.validate": ["vue", "javascript"],
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "always",
-    "source.fixAll.stylelint": "always"
-  },
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": ["source.fixAll.eslint", "source.formatDocument"],
   "editor.quickSuggestions": {
     "other": true,
     "comments": false,

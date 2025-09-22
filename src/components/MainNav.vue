@@ -27,7 +27,11 @@ const handleNavClick = () => {
     class="nav"
   >
     <ul class="nav__list">
-      <li v-for="planet in planets" :key="planet.id" class="nav__list__item">
+      <li
+        v-for="planet in planets"
+        :key="planet.id"
+        class="nav__list__item"
+      >
         <span
           class="nav__list__item--decorator"
           :class="`${planet.name.toLowerCase()}`"
@@ -39,7 +43,10 @@ const handleNavClick = () => {
           @click="handleNavClick"
         >
           {{ planet.name }}
-          <SVGIcon name="icon-chevron" class="nav__list__item--icon" />
+          <SVGIcon
+            name="icon-chevron"
+            class="nav__list__item--icon"
+          />
         </router-link>
       </li>
     </ul>

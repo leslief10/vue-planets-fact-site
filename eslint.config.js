@@ -24,7 +24,7 @@ export default defineConfig([
         'error',
         {
           singleline: 'ignore',
-          multiline: 'ignore',
+          multiline: 'below',
         },
       ],
     },

@@ -3,6 +3,7 @@ import { computed, inject, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import InfoNav from '../components/InfoNav.vue';
 import PlanetInfo from '../components/PlanetInfo.vue';
+import EmptyState from '../components/EmptyState.vue';
 
 const route = useRoute();
 const planets = inject('planetsData');
@@ -28,13 +29,15 @@ const handleSectionUpdate = (section) => {
 
 <template>
   <InfoNav
-    :planet="route.params.planet"
+    :planet-data="currentPlanet?.name"
     :active-section="activeSection"
     @update-section="handleSectionUpdate"
   />
   <PlanetInfo
+    v-if="currentPlanet"
     :planet-data="currentPlanet"
     :active-section="activeSection"
     @update-section="handleSectionUpdate"
   />
+  <EmptyState v-else />
 </template>

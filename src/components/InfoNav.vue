@@ -2,7 +2,7 @@
 defineProps({
   planet: {
     type: String,
-    default: 'Earth',
+    default: '',
   },
   activeSection: {
     type: String,
@@ -20,7 +20,11 @@ const emit = defineEmits(['update-section']);
 </script>
 
 <template>
-  <nav aria-labelledby="information-navigation" class="info-nav">
+  <nav
+    v-if="planet"
+    aria-labelledby="information-navigation"
+    class="info-nav"
+  >
     <ul class="info-nav__list">
       <li
         v-for="section in sections"

@@ -2,7 +2,7 @@
 import { computed, inject } from 'vue';
 import SVGIcon from './SVGIcon.vue';
 import PlanetImage from './PlanetImage.vue';
-import ButtonComponent from './ButtonComponent.vue';
+import ButtonsContainer from './ButtonsContainer.vue';
 
 const visibleNav = inject('visibleNav');
 
@@ -22,7 +22,6 @@ const props = defineProps({
 defineEmits(['update-section']);
 
 const content = computed(() => {
-  if (!props.planetData) return null;
   return props.planetData[props.activeSection];
 });
 
@@ -38,50 +37,32 @@ const extraInfo = computed(() => {
 
 <template>
   <section
-    v-if="planetData"
     class="planet-info"
     :class="[visibleNav ? 'planet-info--invisible' : '']"
   >
-    <PlanetImage :planet-data="planetData" :active-section="activeSection" />
+    <PlanetImage
+      :planet-data="planetData"
+      :active-section="activeSection"
+    />
     <div class="planet-info__organizer">
       <div class="planet-info__description">
         <h1 class="planet-info__description__title">{{ planetData.name }}</h1>
         <p class="planet-info__description__text">{{ content.content }}</p>
         <span class="planet-info__description__link"
           >Source:
-          <a :href="content.source" target="_blank">Wikipedia</a>
+          <a
+            :href="content.source"
+            target="_blank"
+            >Wikipedia</a
+          >
           <SVGIcon name="icon-source" />
         </span>
       </div>
-      <div class="planet-info__buttons">
-        <ButtonComponent
-          :planet="planetData.name.toLowerCase()"
-          :if-selected="activeSection === 'overview'"
-          section="overview"
-          @update-section="$emit('update-section', $event)"
-        >
-          <span>01</span>
-          <span>Overview</span>
-        </ButtonComponent>
-        <ButtonComponent
-          :planet="planetData.name.toLowerCase()"
-          :if-selected="activeSection === 'structure'"
-          section="structure"
-          @update-section="$emit('update-section', $event)"
-        >
-          <span>02</span>
-          <span>Internal Structure</span>
-        </ButtonComponent>
-        <ButtonComponent
-          :planet="planetData.name.toLowerCase()"
-          :if-selected="activeSection === 'geology'"
-          section="geology"
-          @update-section="$emit('update-section', $event)"
-        >
-          <span>03</span>
-          <span>Surface Geology</span>
-        </ButtonComponent>
-      </div>
+      <ButtonsContainer
+        :planet-data="planetData"
+        :active-section="activeSection"
+        @update-section="$emit('update-section', $event)"
+      />
     </div>
     <aside class="planet-info__extra-info">
       <ul class="planet-info__extra-info__list">
@@ -185,10 +166,6 @@ const extraInfo = computed(() => {
   letter-spacing: -1px;
 }
 
-.planet-info__buttons {
-  display: none;
-}
-
 @media screen and (min-width: 768px) {
   .planet-info__extra-info {
     display: flex;
@@ -223,12 +200,6 @@ const extraInfo = computed(() => {
 
   .planet-info__description__text {
     text-align: left;
-  }
-
-  .planet-info__buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
   }
 }
 

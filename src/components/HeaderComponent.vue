@@ -32,7 +32,10 @@ const handleCloseNav = () => {
         <SVGIcon name="icon-hamburger" />
       </button>
     </div>
-    <MainNav :visible-nav="visibleNav" @close-nav="handleCloseNav" />
+    <MainNav
+      :visible-nav="visibleNav"
+      @close-nav="handleCloseNav"
+    />
   </header>
 </template>
 
@@ -56,6 +59,7 @@ const handleCloseNav = () => {
 
 .header__logo__button {
   border: none;
+  cursor: pointer;
 }
 
 .opacity {
