@@ -25,7 +25,6 @@ defineEmits(['update-section']);
 const content = computed(() => {
   return props.planetData[props.activeSection];
 });
-
 </script>
 
 <template>

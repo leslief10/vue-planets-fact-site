@@ -1,6 +1,6 @@
 # Frontend Mentor - Planets fact site solution
 
-This is a solution to the [Planets fact site challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/planets-fact-site-gazqN8w_f). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Planets fact site challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/planets-fact-site-gazqN8w_f). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -11,7 +11,6 @@ This is a solution to the [Planets fact site challenge on Frontend Mentor](https
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
-
 
 ## Overview
 
@@ -31,14 +30,14 @@ Users should be able to:
 
 ### Built with
 
-- [Vite](https://vite.dev/guide/) 
-- [Vue](https://vuejs.org/guide/introduction.html) 
-- [Vue Router](https://router.vuejs.org/guide/) 
+- [Vite](https://vite.dev/guide/)
+- [Vue](https://vuejs.org/guide/introduction.html)
+- [Vue Router](https://router.vuejs.org/guide/)
 
 ### What I learned
 
 This project took me longer than the previous ones, mostly because I ran out of steam at some point and I was also working in different things at the same time. I also wanted it to be as ready as possible before I properly publish it, but that is not very realistic because then it'd never be done.
-Oh yeah, the learning thingy, so I'd worked with Vue Router in the past so I had an idea on the way it work ed and what I could do with it, but it had been a long time since I had to implement routing from scratch so that was a cool thing to re-learn. 
+Oh yeah, the learning thingy, so I'd worked with Vue Router in the past so I had an idea on the way it work ed and what I could do with it, but it had been a long time since I had to implement routing from scratch so that was a cool thing to re-learn.
 
 ### Continued development
 

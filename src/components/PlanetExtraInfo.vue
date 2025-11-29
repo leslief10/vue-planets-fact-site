@@ -2,12 +2,12 @@
 import { computed } from 'vue';
 
 const props = defineProps({
-  planetData : {
+  planetData: {
     type: Object,
     default() {
       return {};
     },
-  }
+  },
 });
 
 const extraInfo = computed(() => {
@@ -18,7 +18,6 @@ const extraInfo = computed(() => {
     'Average Temp.': props.planetData.temperature,
   };
 });
-
 </script>
 
 <template>
