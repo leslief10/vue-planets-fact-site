@@ -18,4 +18,13 @@ const router = createRouter({
   routes,
 });
 
+window.addEventListener('load', function() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('p')) {
+    const redirectPath = params.get('p');
+    window.history.replaceState(null, null, '/vue-planets-fact-site' + redirectPath);
+    router.push(redirectPath);
+  }
+});
+
 export default router;
