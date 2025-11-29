@@ -29,7 +29,7 @@ const handleSectionUpdate = (section) => {
 
 <template>
   <InfoNav
-    :planet-data="currentPlanet?.name"
+    :planet="currentPlanet?.name"
     :active-section="activeSection"
     @update-section="handleSectionUpdate"
   />

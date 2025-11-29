@@ -58,6 +58,7 @@ const emit = defineEmits(['update-section']);
 
 .info-nav__list__item {
   position: relative;
+  cursor: pointer;
 }
 
 .info-nav__list__item--decorator {
