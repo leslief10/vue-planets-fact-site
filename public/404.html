@@ -8,13 +8,13 @@
       // MIT License
       // https://github.com/rafgraph/spa-github-pages
       const segmentCount = 1; // the number of directory levels to keep
-      const location = window.location;
-      location.replace(
-        location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') +
-        location.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?p=/' +
-        location.pathname.slice(1).split('/').slice(segmentCount).join('/').split('?')[0] +
-        (location.search ? '&q=' + location.search.slice(1).replace(/&/g, '%26') : '') +
-        location.hash
+      const loc = window.location;
+      loc.replace(
+        loc.protocol + '//' + loc.hostname + (loc.port ? ':' + loc.port : '') +
+        loc.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?p=/' +
+        loc.pathname.slice(1).split('/').slice(segmentCount).join('/').split('?')[0] +
+        (loc.search ? '&q=' + loc.search.slice(1).replace(/&/g, '%26') : '') +
+        loc.hash
       );
     </script>
   </head>
