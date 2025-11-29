@@ -24,7 +24,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Planets Fact Site](https://leslief10.github.io/planets-facts/)
+- Live Site URL: [Planets Fact Site](https://leslief10.github.io/vue-planets-fact-site/)
 
 ## My process
 
