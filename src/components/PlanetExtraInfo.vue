@@ -21,7 +21,7 @@ const extraInfo = computed(() => {
 </script>
 
 <template>
-  <aside class="planet-extra-info">
+  <div class="planet-extra-info">
     <ul class="planet-extra-info__list">
       <li
         v-for="(data, type) in extraInfo"
@@ -32,7 +32,7 @@ const extraInfo = computed(() => {
         <span class="planet-extra-info__item--value">{{ data }}</span>
       </li>
     </ul>
-  </aside>
+  </div>
 </template>
 
 <style scoped>
