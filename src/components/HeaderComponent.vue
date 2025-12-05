@@ -25,6 +25,7 @@ const handleCloseNav = () => {
         The Planets
       </router-link>
       <button
+        aria-label="Show primary navigation"
         class="header__logo__button"
         :class="[visibleNav ? 'opacity' : '']"
         @click="changeNavVisibility"

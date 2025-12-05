@@ -1,5 +1,3 @@
-<script setup></script>
-
 <template>
   <section class="empty-state">
     <span class="empty-state__emoji">&#x1F9D1;&#x200D;&#x1F680;</span>

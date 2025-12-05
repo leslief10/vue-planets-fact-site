@@ -28,16 +28,18 @@ const handleSectionUpdate = (section) => {
 </script>
 
 <template>
-  <InfoNav
-    :planet="currentPlanet?.name"
-    :active-section="activeSection"
-    @update-section="handleSectionUpdate"
-  />
-  <PlanetInfo
-    v-if="currentPlanet"
-    :planet-data="currentPlanet"
-    :active-section="activeSection"
-    @update-section="handleSectionUpdate"
-  />
-  <EmptyState v-else />
+  <main>
+    <InfoNav
+      :planet="currentPlanet?.name"
+      :active-section="activeSection"
+      @update-section="handleSectionUpdate"
+    />
+    <PlanetInfo
+      v-if="currentPlanet"
+      :planet-data="currentPlanet"
+      :active-section="activeSection"
+      @update-section="handleSectionUpdate"
+    />
+    <EmptyState v-else />
+  </main>
 </template>

@@ -20,7 +20,7 @@ defineEmits(['update-section']);
 <template>
   <div class="planet-buttons-container">
     <ButtonComponent
-      :planet="planetData.name.toLowerCase()"
+      :planet="planetData?.name?.toLowerCase()"
       :if-selected="activeSection === 'overview'"
       section="overview"
       @update-section="$emit('update-section', $event)"
@@ -29,7 +29,7 @@ defineEmits(['update-section']);
       <span>Overview</span>
     </ButtonComponent>
     <ButtonComponent
-      :planet="planetData.name.toLowerCase()"
+      :planet="planetData?.name?.toLowerCase()"
       :if-selected="activeSection === 'structure'"
       section="structure"
       @update-section="$emit('update-section', $event)"
@@ -38,7 +38,7 @@ defineEmits(['update-section']);
       <span>Internal Structure</span>
     </ButtonComponent>
     <ButtonComponent
-      :planet="planetData.name.toLowerCase()"
+      :planet="planetData?.name?.toLowerCase()"
       :if-selected="activeSection === 'geology'"
       section="geology"
       @update-section="$emit('update-section', $event)"

@@ -23,7 +23,7 @@ const handleNavClick = () => {
 <template>
   <nav
     v-show="visibleNav || displayNav"
-    aria-labelledby="primary-navigation"
+    aria-label="Primary navigation"
     class="nav"
   >
     <ul class="nav__list">

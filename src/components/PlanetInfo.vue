@@ -23,7 +23,7 @@ const props = defineProps({
 defineEmits(['update-section']);
 
 const content = computed(() => {
-  return props.planetData[props.activeSection];
+  return props?.planetData[props?.activeSection];
 });
 </script>
 
@@ -38,8 +38,8 @@ const content = computed(() => {
     />
     <div class="planet-info__organizer">
       <div class="planet-info__description">
-        <h1 class="planet-info__description__title">{{ planetData.name }}</h1>
-        <p class="planet-info__description__text">{{ content.content }}</p>
+        <h1 class="planet-info__description__title">{{ planetData?.name }}</h1>
+        <p class="planet-info__description__text">{{ content?.content }}</p>
         <span class="planet-info__description__link"
           >Source:
           <a

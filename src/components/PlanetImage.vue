@@ -18,24 +18,24 @@ const props = defineProps({
 
 const base = import.meta.env.BASE_URL;
 const svgImage = computed(() => {
-  if (props.activeSection === 'geology') {
-    return `${base}/svg/${props.planetData.images.overview}`;
+  if (props?.activeSection === 'geology') {
+    return `${base}/svg/${props?.planetData?.images?.overview}`;
   }
-  return `${base}/svg/${props.planetData.images[props.activeSection]}`;
+  return `${base}/svg/${props?.planetData?.images[props?.activeSection]}`;
 });
 
 const svgImageStyle = computed(() => {
   if (innerWidth.value < 768) {
-    return props.planetData.images.size.mobile;
+    return props?.planetData?.images?.size?.mobile;
   } else if (innerWidth.value >= 768 && innerWidth.value < 1024) {
-    return props.planetData.images.size.tablet;
+    return props?.planetData?.images?.size?.tablet;
   }
 
-  return props.planetData.images.size.desktop;
+  return props?.planetData?.images?.size?.desktop;
 });
 
 const pngImage = computed(() => {
-  return `${base}/png/${props.planetData.images.geology}`;
+  return `${base}/png/${props?.planetData?.images?.geology}`;
 });
 </script>
 
@@ -43,13 +43,13 @@ const pngImage = computed(() => {
   <figure class="planet-img">
     <img
       :src="svgImage"
-      :alt="`${planetData.name} ${activeSection}`"
+      :alt="`${planetData?.name} ${activeSection}`"
       :style="{ width: svgImageStyle, height: svgImageStyle }"
     />
     <img
       v-if="activeSection === 'geology'"
       :src="pngImage"
-      :alt="`${planetData.name} ${activeSection} picture`"
+      :alt="`${planetData?.name} ${activeSection} picture`"
       class="planet-img__png"
     />
   </figure>

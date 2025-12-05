@@ -22,7 +22,7 @@ const emit = defineEmits(['update-section']);
 <template>
   <nav
     v-if="planet"
-    aria-labelledby="information-navigation"
+    aria-label="Information navigation"
     class="info-nav"
   >
     <ul class="info-nav__list">

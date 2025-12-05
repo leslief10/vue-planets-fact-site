@@ -12,10 +12,10 @@ const props = defineProps({
 
 const extraInfo = computed(() => {
   return {
-    'Rotation Time': props.planetData.rotation,
-    'Revolution Time': props.planetData.revolution,
-    Radius: props.planetData.radius,
-    'Average Temp.': props.planetData.temperature,
+    'Rotation Time': props?.planetData?.rotation,
+    'Revolution Time': props?.planetData?.revolution,
+    Radius: props?.planetData?.radius,
+    'Average Temp.': props?.planetData?.temperature,
   };
 });
 </script>
